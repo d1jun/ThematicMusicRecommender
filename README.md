@@ -11,3 +11,10 @@ import csv
 import rpy2.robjects as robjects
 import pandas as pd
 import random
+
+from nltk.corpus import wordnet
+# install nltk
+# `pip install nltk --user`
+# import nltk
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
