@@ -74,9 +74,11 @@ def processDB():
 
     # create new db that stores song themes
     # the 'w' argument overwrites an existing file of the name; or creates a file of that name
-    out_file = open('songwithThemedb.csv', 'a', encoding='UTF8')
+    mode = 'a'
+    out_file = open('songwithThemedb.csv', mode, encoding='UTF8')
     writer = csv.writer(out_file, lineterminator='\n')
-    writer.writerow(['spotify_id','song','artist','theme'])
+    if mode == 'w':
+        writer.writerow(['spotify_id','song','artist','theme'])
 
     # iterate over rows in the songdb.csv file
     for row in reader_obj:
@@ -94,7 +96,7 @@ def processDB():
                 temp = open('tempTheme.txt', 'w', encoding='UTF8')
                 temp_writer = csv.writer(temp, lineterminator='\n')
                 temp_writer.writerow(['love'])
-                #temp.close()
+                temp.close()
             theme = themeSimilarityCalc.main()
             row[3] = theme
             writer.writerow(row)
@@ -105,9 +107,10 @@ def processDB():
             writer_theme = csv.writer(out_file_theme, lineterminator='\n')
             writer_theme.writerow(row[0:3])
             out_file_theme.close()
+            print("scraped lyrics: " + row[1] + " by " + row[2])
         else:
             print("no lyrics: " + row[1] + " by " + row[2])
-
+        
     in_file.close()   
     out_file.close() 
 

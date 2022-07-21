@@ -15,6 +15,9 @@ def getLyricsGoogle(search, driver):
         # the classes '.xaAUmb' and '.ujudUb' may change
         # web scrape
         lyrics = driver.find_elements(By.CSS_SELECTOR, '.xaAUmb .ujudUb span')
+        # when page doesnt have listen/ other recordings component
+        if lyrics == []:
+            lyrics = driver.find_elements(By.CSS_SELECTOR, '.bbVIQb .ujudUb span')
     except:
         return ''
     # format lyrics text, save lyrics as single string
@@ -46,6 +49,5 @@ def main(song, artist):
     lyrics = getLyricsGoogle(search, driver)
     # if lyrics == '':
     #     lyrics = getLyricsAZlyrics(song, artist, driver)
-    # driver.quit()
+    driver.quit()
     return lyrics
-# print(main("dream on", "aerosmith"))
