@@ -7,7 +7,7 @@ import random
 
 NUM_PLAYLIST_SONGS = 20
 
-# reads user's songs, assigns the collection of songs a theme, outputs thematically similar songs in songList.csv
+# reads user's songs from songs.csv, assigns the collection of songs a theme, outputs thematically similar songs in songList.csv
 def matchTheme():
     # Open file
     in_file = open('songs.csv', encoding='UTF8')
