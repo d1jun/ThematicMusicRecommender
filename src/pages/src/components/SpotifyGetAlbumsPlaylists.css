@@ -1,0 +1,23 @@
+.spotifyGetAlbumsPlaylists > button{
+    background: #1a73e8;
+    border-radius: 13px;
+    width: 50%;
+    height: 30px;
+    border: 1px solid;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-color: #3447e9 #3447e9 #3447e9;
+    color: white;
+}
+
+.playlists__userPlaylists > select{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.playlists__userPlaylists > h1{
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
