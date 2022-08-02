@@ -11,6 +11,9 @@ function SpotifyGetAlbumsPlaylists() {
     const [albums, setAlbums] = useState({});
   
     const handleGetPlaylists = () => {
+      if (token === "") {
+          return;
+      }
       axios
         .get(PLAYLISTS_ENDPOINT, {
           headers: {
@@ -27,6 +30,9 @@ function SpotifyGetAlbumsPlaylists() {
     };
 
     const handleGetAlbums = () => {
+        if (token === "") {
+            return;
+        }
         axios
           .get(ALBUMS_ENDPOINT, {
             headers: {
@@ -42,14 +48,14 @@ function SpotifyGetAlbumsPlaylists() {
           });
     };
 
-    // runs once on the first render
+    // runs once on the first render; set access token
     useEffect(() => {
       if (localStorage.getItem("accessToken")) {
         setToken(localStorage.getItem("accessToken"));
       }
     }, []);
 
-    // runs when token is changed
+    // runs when token is changed; get user's albums and playlists
     useEffect(() => {
       handleGetAlbums();
       handleGetPlaylists();
@@ -62,16 +68,13 @@ function SpotifyGetAlbumsPlaylists() {
                 <h1>Choose a Playlist or an Album</h1>
                 <select id='playlists' placeholder='Choose a playlist'>
                     <optgroup label='Your Playlists'>
-                        {/* <option value={"test"}>TEST1</option> */}
                         {playlists?.items ? playlists.items.map((item) => <option value={item.id}>{item.name}</option>) : null}
                     </optgroup>
                     <optgroup label='Your Albums'>
-                        {/* <option value={"test"}>TEST2</option> */}
                         {albums?.items ? albums.items.map((item) => <option value={item.album.id}>{item.album.name}</option>) : null}
                     </optgroup>
                 </select>
             </div>
-            {/* <button onClick={()=> {handleGetPlaylists();handleGetAlbums()}}>Get Playlists and Albums</button> */}
         </div>
       </>
     );
