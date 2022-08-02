@@ -5,7 +5,7 @@ import SpotifyGetAlbumsPlaylists from './components/SpotifyGetAlbumsPlaylists';
 import GetTracks from './components/GetTracks';
 import HomeHeader from './components/HomeHeader';
 
-const LOGIN_ERROR = '?error=access_denied'
+const LOGIN_ERROR = '?error=access_denied';
 
 function Playlists() {
   useEffect(() => {
@@ -51,8 +51,11 @@ function Playlists() {
               <select>Choose a Theme</select>
             </div> */}
               <SpotifyGetAlbumsPlaylists />
+              <div className='gettracks__btn'>
+                <GetTracks />
+              </div>
         </div>
-        <GetTracks />
+        
         <Link to='/load'>
             <button className='playlistBtn'>Tester btn to load playlist</button>
         </Link>
