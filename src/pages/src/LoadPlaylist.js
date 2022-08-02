@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import './LoadPlaylist.css'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './LoadPlaylist.css';
 import axios from 'axios';
 import HomeHeader from './components/HomeHeader';
 
-const NEW_TRACK_API_ENDPOINT = 'http://localhost:5000/newtracks'
+const NEW_TRACK_API_ENDPOINT = 'http://localhost:5000/newtracks';
 
 function LoadPlaylist() {
   const [token, setToken] = useState("");
@@ -37,14 +37,13 @@ function LoadPlaylist() {
     })
   }, [token]);
   
-  // MOVE THIS TO HANDLECREATEPLAYLIST????????????????
   // POST new tracks to new spotify playlist
   useEffect(() => {
     const ADD_SONG_ENDPOINT = `https://api.spotify.com/v1/playlists/${playlistID}/tracks`;
     if (playlistID === "") {
       return;
     }
-    const request = axios.post(ADD_SONG_ENDPOINT, 
+    axios.post(ADD_SONG_ENDPOINT, 
       {
         "uris": URIs,
       },
@@ -53,38 +52,32 @@ function LoadPlaylist() {
           Authorization: `Bearer ${token}`
         }
       });
-    return request;
   }, [playlistID])
 
   // GET newly generated tracks from songList.csv
   useEffect(() => {
-    setURIs([])
-    // async function setState(set, state) {
-    //   await set(state);
-    // }
     async function fetchData() {
       const request = await axios.get(NEW_TRACK_API_ENDPOINT);
-      // setState(setSongs, request.data);
       setSongs(request.data)
-      let uri = []
-      for (let i = 0; i < Object.keys(songs.data.song).length; i++){
-        uri.push(`spotify:track:${songs.data.spotify_id[i]}`);
-      }
-      // setState(setURIs, uri);
-      setURIs(uri);
-      // setState(setTheme, songs.data.theme[0]);
-      setTheme(songs.data.theme[0]);
-      console.log(theme);
-      // console.log(songs)
-      if (request?.data) {
-        setGETReturn(true);
-      }
-      // let req = request?.data ? setGETReturn(true) : null;
-      return request;
     }
-    fetchData();
-    // setGETReturn(true);
+    async function fetch() {
+      await fetchData();
+      setGETReturn(true);
+    }
+    fetch();
   }, [])
+
+  // set theme, URIs once songs data is set
+  useEffect(() => {
+      if (songs?.data) {
+          setTheme(songs.data.theme[0]);
+          let uri = []
+          for (let i = 0; i < Object.keys(songs.data.song).length; i++){
+            uri.push(`spotify:track:${songs.data.spotify_id[i]}`);
+          }
+          setURIs(uri);
+      }
+  }, [songs])
 
   const handleCreatePlaylist = () => {
     const CREATE_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/users/${ID}/playlists`;
@@ -102,7 +95,6 @@ function LoadPlaylist() {
         })
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data.id);
           setPlaylistID(data.id);
         })
         .catch(error => console.log(error));
@@ -110,18 +102,24 @@ function LoadPlaylist() {
 
   return (
     <div className='loadPlaylist'>
-        <HomeHeader></HomeHeader>
+        <HomeHeader/>
         <div className='loadPlaylist__container'>
-            <h1>Generating Your New Playlist...</h1>
-            {GETReturn ? <button>Display new songs</button> : <p>Loading...</p>}
-            <button onClick={handleCreatePlaylist} className='loadPlaylist__import'>Import your new playlist to your Spotify account</button>
-            
-            {songs?.data ? <p>{songs.data.song[0]}</p> : null}
-            
+            {GETReturn ? <h1>Complete!</h1> : <h1>Generating Your New Playlist...</h1>}
+            {GETReturn ? 
+                <button onClick={handleCreatePlaylist} className='loadPlaylist__import'>
+                    Import your new playlist to your Spotify account
+                </button> 
+                : 
+                <p>Please Wait</p>
+            }        
+            {GETReturn?
+            <Link to='/playlists'>
+                    <button className='loadPlaylist__another'>Create Another Playlist</button>
+            </Link>
+            :
+            null
+          }    
         </div>
-        <Link to='/playlists'>
-                <button className='loadPlaylist__another'>Create Another Playlist</button>
-        </Link>
     </div>
   )
 }
