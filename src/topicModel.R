@@ -12,7 +12,7 @@ setwd("C:/Development/Projects/ThematicMusicRecommender/src")
 metadata <- read_csv("songTemp.csv")
 
 # contractions and other words the wordnet can't handle
-contractions = c("doin", "something", "arent", "theres", "cant", "theyd", "couldnt", "theyll", "didnt", "theyre", "doesnt", "theyve", "dont", "wed", "hadnt", "hasnt", "weve", "havent", "werent", "hed", "whatll", "whatre", "hes", "whats", "id", "whatve", "wheres", "im", "whod", "ive", "wholl", "isnt", "lets", "whos", "mightnt", "whove", "mustnt", "wont", "shant", "wouldnt", "youd", "youll", "shes", "youre", "shouldnt", "youve", "thats")
+contractions = c("ill","doin", "something", "arent", "theres", "cant", "theyd", "couldnt", "theyll", "didnt", "theyre", "doesnt", "theyve", "dont", "wed", "hadnt", "hasnt", "weve", "havent", "werent", "hed", "whatll", "whatre", "hes", "whats", "id", "whatve", "wheres", "im", "whod", "ive", "wholl", "isnt", "lets", "whos", "mightnt", "whove", "mustnt", "wont", "shant", "wouldnt", "youd", "youll", "shes", "youre", "shouldnt", "youve", "thats")
 #STM
 #Process the data to put it in STM format.  Textprocessor automatically does preprocessing
 temp<-textProcessor(documents=metadata$lyrics,metadata=metadata, stem = FALSE, customstopwords = contractions)
