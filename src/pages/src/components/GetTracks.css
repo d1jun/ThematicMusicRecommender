@@ -1,0 +1,13 @@
+.getTracks__generate{
+    background: #1a73e8;
+    border-color: #3447e9 #3447e9 #3447e9;
+    border-radius: 13px;
+    height: 30px;
+    border: 1px solid;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+    text-align: center;
+    align-self: center;
+}
