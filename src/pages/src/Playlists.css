@@ -20,3 +20,7 @@
 .playlists__userPlaylists{
     text-align: center;
 }
+
+.gettracks__btn {
+    align-self: center;
+}
