@@ -4,7 +4,7 @@ import pandas as pd
 from flask_cors import CORS
 import csv
 
-# flow of API: make POST requests for user tracks, make GET request for new tracks
+# flow of API: make DELETE request to reset songs.csv, make POST requests for user tracks, make GET request for new tracks
 
 app = Flask(__name__)
 CORS(app)
@@ -60,7 +60,7 @@ class UserTracks(Resource):
                 'message': f"'{args['spotify_id']}' user not found."
             }, 404    
     
-    # reset the songs.csv to add new songs
+    # reset songs.csv to add new songs
     def delete(self):
         out_file = open('songs.csv', 'w', encoding='UTF8')
         writer = csv.writer(out_file, lineterminator='\n')
@@ -71,8 +71,8 @@ class UserTracks(Resource):
         data = data.to_dict()  # convert dataframe to dictionary
         return {'data': data}, 200
 
-# GET request to process user tracks and create new tracks locally, then new song data to webpage
 class NewTracks(Resource):
+    # GET request to process user tracks and create new tracks locally, then new song data to webpage
     def get(self):
         from main import matchTheme
         matchTheme()
