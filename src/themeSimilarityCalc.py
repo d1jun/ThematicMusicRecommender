@@ -1,5 +1,6 @@
 from nltk.corpus import wordnet
 
+# deprecated now that I use the nltk package to handle calculations
 # discard text that is not the similiarty metric calculation
 def trim(similarity):
     metric = "0."
