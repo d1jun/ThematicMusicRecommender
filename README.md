@@ -6,8 +6,9 @@ song database.
 The application takes user inputted songs, extracts the lyrics, and produces a theme 
 related to the entire collection of inputted songs. Next, the project outputs a 
 playlist of songs of that theme. This project uses the Spotify API to handle 
-1/5/1963 to 1/19/2019. The database in use contains data about the track 
-inputted songs and to generate outputted playlists.
+user authentication. The Spotify API is also used to retrieve the user's saved 
+playlists and albums, retrieve the tracks from a selected playist or album, create
+a new playlist, and add new tracks to the newly created playlist.
 
 # Original Song Database
 The song database consists of songs from the Billboard 200 albums from 
@@ -19,7 +20,7 @@ contains more metadata about each track.
 # Packages
 This project requires webdriver [installation](https://chromedriver.chromium.org/downloads).
 
-In the files you want to use webdriver:
+In the Python files you want to use webdriver:
 
 ```python
 from selenium import webdriver
@@ -33,7 +34,7 @@ This project uses [wordnet](https://www.nltk.org/howto/wordnet.html) to calculat
 pip install nltk --user
 ```
 
-In the files you want to use wordnet:
+In the Python files you want to use wordnet:
 
 ```python
 from nltk.corpus import wordnet
