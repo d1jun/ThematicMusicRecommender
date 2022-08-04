@@ -1,3 +1,7 @@
+# flow: extract then send (song, artist) ==> lyricScraper.py -> outputs lyrics ==> topicModel.R -> outputs topics
+# ==> themeSimilarityCalc.py -> outputs theme that is most similar to topic 
+# -> access songs of that theme from theme.csv file -> output playlist of thematically related songs
+
 import csv
 import themeSimilarityCalc
 import lyricScraper
