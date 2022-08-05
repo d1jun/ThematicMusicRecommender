@@ -6,9 +6,10 @@ song database.
 The application takes user inputted songs, extracts the lyrics, and produces a theme 
 related to the entire collection of inputted songs. Next, the project outputs a 
 playlist of songs of that theme. This project uses the Spotify API to handle 
-user authentication. The Spotify API is also used to retrieve the user's saved 
-playlists and albums, retrieve the tracks from a selected playist or album, create
-a new playlist, and add new tracks to the newly created playlist.
+user authentication. The [Spotify API](https://developer.spotify.com/documentation/web-api/) 
+is also used to retrieve the user's saved playlists and albums, retrieve the 
+tracks from a selected playist or album, create a new playlist, and add new 
+tracks to the newly created playlist.
 
 # Original Song Database
 The song database consists of songs from the Billboard 200 albums from 
