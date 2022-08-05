@@ -30,7 +30,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 ```
 
-This project uses [wordnet](https://www.nltk.org/howto/wordnet.html) to calculate the similiarity between a theme and a set of lyrics. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install wordnet.
+This project uses [wordnet](https://www.nltk.org/howto/wordnet.html) to calculate 
+the similiarity between a theme and a set of lyrics. Use the package manager 
+[pip](https://pip.pypa.io/en/stable/) to install wordnet.
+[This is a useful online demo](https://ws4jdemo.appspot.com/) to understand
+how wordnet makes calculations.
 ```bash
 pip install nltk --user
 ```
