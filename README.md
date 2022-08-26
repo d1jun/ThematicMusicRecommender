@@ -8,7 +8,7 @@ related to the entire collection of inputted songs. Next, the project outputs a
 playlist of songs of that theme. This project uses the 
 [Spotify API](https://developer.spotify.com/documentation/web-api/) to handle 
 user authentication. The Spotify API is also used to retrieve the user's saved 
-playlists and albums, retrieve the tracks from a selected playist or album, 
+playlists and albums, retrieve the tracks from a selected playlist or album, 
 create a new playlist, and add new tracks to the newly created playlist.
 
 # Original Song Database
