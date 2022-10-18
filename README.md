@@ -53,3 +53,5 @@ nltk.download('omw-1.4')
 Link to the web app
 
 Insert gif demo
+
+# Limitations
