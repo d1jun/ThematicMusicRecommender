@@ -55,3 +55,12 @@ Link to the web app
 Insert gif demo
 
 # Limitations
+The topic model takes as input a corpus of text data, and it outputs a several sets of words that describe the corpus. 
+Each of these sets of words may describe a different tpic.
+This limits the application's ability to choose a single topic that encompasses the theme of the corpus.
+The traditional use of this topic modeling package requires a human to consider all the sets of outputted words
+in order to identify an aggregate that condenses the output into a single theme. The application seeks to
+evade this limitation by selecting the most common word in the most likely topic.
+However, this is not a foolproof solution since the most common word in the output set does not necessarily
+describe the theme of the corpus. The theme of the corpus must be extracted by considering all the words in
+the ouptut sets.
